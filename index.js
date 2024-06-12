@@ -7,7 +7,7 @@ const app = express();
 
 const port = 5000;
 
-app.use('/user', UserRouter );
+app.use('/user', UserRouter )
 
 // route or endpoint 
 app.get('/', (req, res) => {
