@@ -1,6 +1,7 @@
 const express = require('express');  // import express
 
 const UserRouter = require('./routers/userRouter')
+const BlogRouter = require('./routers/blogRouter')
 
 // initialize express 
 const app = express();
@@ -11,6 +12,7 @@ app.use(express.json() )
 
 // middleware 
 app.use('/user', UserRouter )
+app.use('/blog', BlogRouter )
 
 // route or endpoint 
 app.get('/', (req, res) => {
