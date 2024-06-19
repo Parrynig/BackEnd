@@ -48,6 +48,8 @@ router.get('/getbycity/:city', (req, res) => {
 
 });
 
+// get by mail 
+
 router.get('/getbyemail/:email', (req, res) => {
 
     Model.findOne({ email: req.params.email })
@@ -59,6 +61,7 @@ router.get('/getbyemail/:email', (req, res) => {
         });
 });
 
+// data get by id 
 router.get('/getbyid/:id', (req, res) => {
 
     Model.findById( req.params.id )
@@ -70,6 +73,28 @@ router.get('/getbyid/:id', (req, res) => {
         });
 });
 
+// update using put 
+router.put('/update/:id', (req, res) =>{
+    Model.findByIdAndUpdate(req.params.id, req.body,{new : true} )
+    .then((result) => {
+    res.status(200).json(result);        
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
+
+// delete 
+
+router.delete('/delete/:id', (req, res ) =>{
+    Model.findByIdAndDelete(req.params.id, req.body )
+    .then((result) => {
+    res.status(200).json(result);        
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 module.exports = router;
